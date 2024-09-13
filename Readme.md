@@ -2,6 +2,8 @@
 
 **DocM** is a modern,sleek and feature-rich document creation tool,made with simplicity and functionality enhanced with modern features to elevate your writing experience.Built using a robust tech stack, DocM is designed to be highly customizable, responsive, and easily extensible and lot of ai features are coming....
 
+https://github.com/user-attachments/assets/0df959d6-a6eb-4949-b6d8-085dee6848a9
+
 ## 🚀 Features
 
 - **Real-Time Editing**: Write and edit documents in real-time.
