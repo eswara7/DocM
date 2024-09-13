@@ -57,7 +57,7 @@ const Signup = () => {
        }
         }
   return (
-    <div className='flex items-center justify center flex-col h-screen  bg-[#F0F0F0]'>
+    <div className='flex items-center justify-center flex-col h-screen bg-[#F0F0F0] p-4'>
         <div className=" w-full flex items-center justify-center mt-16 mr-12">
             <div className="left w-full md:w-[30%] flex flex-col md:ml-[100px]">
             <img className ="w-full h-auto mt-5 rounded-full" src={logo} alt={"logo"} />
