@@ -1,0 +1,53 @@
+.inputBox{
+  background-color: #EAEAEA;
+  display: flex;
+  align-items:center;
+  border: 1px solid #D1D5DB; 
+  border-radius: 10px;
+}
+.inputBox input{
+  flex: 1;
+  background-color: transparent;
+  padding: 10px;
+  border: 5px;
+  outline: 0;
+}
+inputBox i{
+  font-size:22px;
+  margin-right: 5px;
+  margin-left:5px;   
+  
+}
+.jodit-wysiwyg{
+  min-height: calc(100vh - 250px) !important;
+}
+
+/* styles.css */
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  background-color: #f9f9f9;
+}
+
+.search-input {
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.search-button {
+  border: none;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
