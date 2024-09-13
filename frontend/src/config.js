@@ -1,1 +1,1 @@
-export const backend_uri = "http://localhost:3000/api/v1"
+export const backend_uri = "https://docm-api.onrender.com/api/v1"
