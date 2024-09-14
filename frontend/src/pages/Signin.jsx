@@ -35,7 +35,8 @@ const Signin = () => {
                 localStorage.setItem("isLoggedIn",true),
                 localStorage.setItem("userId",data.userId)
                 toast.success("signed in",{duration:2400})
-                navigate("/")
+                window.location.href = "/"
+               //navigate("/")
             }
             else{
                 setError(data.message)
