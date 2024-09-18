@@ -1,19 +1,19 @@
 import zod from 'zod'
 
 const signupBodySchema = zod.object({
-    name:zod.string().min(2,{message:"name should atleast contain 2 characters"}),
+    name:zod.string().min(2,{message:"name should atleast contain 2 characters, "}),
     email:zod.string().email(),
-    password:zod.string().min(8,{message:"password should atleast be 8 characters long"}).regex(/[a-z]/,{message:"password should atleast contain one lowercase letter"}).regex(/[A-Z]/,{message:"password should atleast contain one uppercase letter"}).regex(/[0-9]/,{message:"password should alteast have one number"}),
+    password:zod.string().min(8,{message:"password should atleast be 8 characters long, "}).regex(/[a-z]/,{message:"password should atleast contain one lowercase letter, "}).regex(/[A-Z]/,{message:"password should atleast contain one uppercase letter, "}).regex(/[0-9]/,{message:"password should alteast have one number, "}),
     phone: zod.string()
 })
 const signinBodySchema = zod.object({
-    email:zod.string().email(),
-    password:zod.string().min(8,{message:"password shouldt atleast be 8 characters long"}).regex(/[a-z]/,{message:"password should atleast contain one lowercase letter "}).regex(/[A-Z]/,{message:"password should atleast contain one uppercase letter "}).regex(/[0-9]/,{message:"password should atleast have one number"}),
+    email:zod.string().email({message:"invalid email, "}),
+    password:zod.string().min(8,{message:" password should atleast be 8 characters long, "}).regex(/[a-z]/,{message:" password should atleast contain one lowercase , "}).regex(/[A-Z]/,{message:"password should atleast contain one uppercase letter, "}).regex(/[0-9]/,{message:" password should atleast have one number, "}),
 })
 const updateBodySchema = zod.object({
-    email:zod.string().email(),
-    password:zod.string().min(8,{message:"password shouldt atleast be 8 characters long"}).regex(/[a-z]/,{message:"password should atleast contain one lowercase letter "}).regex(/[A-Z]/,{message:"password should atleast contain one uppercase letter "}).regex(/[0-9]/,{message:"password should atleast have one number"}),
-    name:zod.string()
+    email:zod.string().email().optional(),
+    password:zod.string().min(8,{message:"password shouldt atleast be 8 characters long, "}).regex(/[a-z]/,{message:"password should atleast contain one lowercase letter "}).regex(/[A-Z]/,{message:"password should atleast contain one uppercase letter, "}).regex(/[0-9]/,{message:"password should atleast have one numbe, "}).optional(),
+    name:zod.string().optional()
 })
 
 export{signupBodySchema,signinBodySchema,updateBodySchema}

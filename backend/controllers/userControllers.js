@@ -4,24 +4,22 @@ import dotenv from "dotenv";
 import { signinBodySchema, signupBodySchema, updateBodySchema } from "../zodValidation.js";
 import { userModel } from "../model/userSchema.js";
 import { docModel } from "../model/docSchema.js";
-
-//await bcrypt.compare(password, hash);
 const saltRounds = 15;
-
 dotenv.config();
-
 
 const signup = async (req,res)=>{
   // let {username,name,email,phone,password} = req.body;
    const isValid = signupBodySchema.safeParse(req.body)
  
    if(!isValid.success){
-      // return res.status(400).json({success:false,message:`invalid inputs${isValid.error}`})
-       return res.status(401).json({success:false,message:"invalid inputs"})
+      const errors = isValid.error.errors.map(err=>err.message)
+       return res.status(400).json({success:false,message:errors})
    }
    try {
-     let emailExist = await userModel.findOne({email:req.body.email})
-     let phoneExist = await userModel.findOne({phone:req.body.phone})
+      const[emailExist,phoneExist] = await promise.all([
+      userModel.findOne({email:req.body.email}),
+      userModel.findOne({phone:req.body.phone})
+     ])
      if(emailExist){
          return res.status(400).json({success:false,message:"email already exist"})
      }
@@ -49,14 +47,15 @@ const signup = async (req,res)=>{
 const signin = async(req,res)=>{
     const isValid = signinBodySchema.safeParse(req.body)
     if(!isValid.success){
-      return res.status(400).json({success:false,message:"invalid credentials"})
+      const errors = isValid.error.errors.map(err => err.message);
+      return res.status(400).json({success:false,message:errors})
     }
 
   let user;
   try {
     user = await userModel.findOne({email:req.body.email})
     if(!user){
-      return res.status(404).json({success:false,message:"user not found"})
+      return res.status(404).json({success:false,message:"email doesn't exist"})
     }}
     catch(error){
         return res.status(500).json({success:false,message:"server error"})
@@ -72,8 +71,10 @@ const signin = async(req,res)=>{
 const updateUser = async(req,res)=>{
   const isValid = updateBodySchema.safeParse(req.body);
   if(!isValid.success){
-    return res.status(400).json({success:false,message:"invalid inputs"})
+    const errors = isValid.error.errors.map(err => err.message);
+    return res.status(400).json({success:false,message:errors})
   }
+
   await userModel.updateOne({_id:req.userId},req.body)
   return res.status(200).json({success:true,message:"updated successfully"})
 }
@@ -124,8 +125,6 @@ const search = async(req,res)=>{
     res.status(500).json({success:false,message:"search failed"})
   }
 }
-
-//router.options('/generate', cors());
 
 export{
   signup,
