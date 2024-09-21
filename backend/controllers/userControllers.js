@@ -16,7 +16,7 @@ const signup = async (req,res)=>{
        return res.status(400).json({success:false,message:errors})
    }
    try {
-      const[emailExist,phoneExist] = await promise.all([
+      const[emailExist,phoneExist] = await Promise.all([
       userModel.findOne({email:req.body.email}),
       userModel.findOne({phone:req.body.phone})
      ])
