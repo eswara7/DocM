@@ -50,7 +50,6 @@ import { backend_uri } from '../config';
     }
 const handleSearch = async(query)=>{
     const token = localStorage.getItem("token")
-    console.log(token)
     if(!query){
         return
     }
